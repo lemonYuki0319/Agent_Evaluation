@@ -75,3 +75,4 @@ RAG/
 
 - `src/retriever_client.py` 与 `src/trace_loader.py` 为 STUB，待实现
 - Judge 模型统一用 `MiniMax-M2.5`（不用 M3，避免思考块破坏 JSON）
+# Agent_Evaluation
