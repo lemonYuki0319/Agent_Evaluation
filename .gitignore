@@ -1,0 +1,24 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+
+# 虚拟环境
+.venv/
+venv/
+
+# 运行时输出
+runs/
+logs/
+data/processed/
+data/badcase/
+
+# 敏感配置
+.env
+
+# IDE
+.vscode/
+.idea/
+
+# DeepEval 缓存
+.deepeval/

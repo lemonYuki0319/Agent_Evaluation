@@ -1,0 +1,11 @@
+# RAG 评测系统依赖（Hybrid DeepEval + RAGAS）
+# 已验证版本组合: ragas 0.3.1 / deepeval 4.2.2 / langchain-openai 1.6.0
+
+deepeval>=4.2
+ragas>=0.3
+openai>=1.0
+langchain-openai>=0.2.0
+python-dotenv>=1.0
+pandas>=2.0
+requests>=2.31
+Pillow>=9.0          # ragas 多模态 prompt 依赖
