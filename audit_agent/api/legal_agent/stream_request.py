@@ -11,6 +11,7 @@ import requests
 
 from audit_agent.api.legal_agent.login import login
 from audit_agent.registry import register_agent
+from config.logger import get_logger
 from config.pipeline_cfg import (
     AGENT_ACCOUNT,
     AGENT_BASE_URL,
@@ -107,6 +108,12 @@ def stream_chat(prompt, timeout: int = 120) -> dict:
     登录/会话/流式调用失败时返回错误占位，不抛异常，保证批跑不中断。
     """
     try:
+        if isinstance(prompt, str):
+            preview = prompt[:60]
+        else:
+            user_msgs = [m for m in prompt if m.get("role") == "user"]
+            preview = f"多轮 {len(user_msgs)} 轮"
+        get_logger().info(f"调用审计智能体 agent 接口: prompt={preview}")
         headers = _auth_headers()
         thread_id = _create_conversation(headers)
         if isinstance(prompt, str):

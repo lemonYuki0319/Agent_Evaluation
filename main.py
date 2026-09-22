@@ -25,6 +25,7 @@ from config.pipeline_cfg import (
     ensure_dirs,
     new_run_dir,
 )
+from config.logger import get_logger
 from audit_agent import get_agent
 from src.evaluator_deepeval import run_deepeval
 from src.evaluator_ragas import run_ragas
@@ -99,6 +100,7 @@ def main():
     if args.max_cases:
         records = records[: args.max_cases]
     print(f"[INFO] 加载 {len(records)} 条样本")
+    get_logger().info(f"评测启动: agent={AGENT_NAME} run_id={run_dir.name} 样本数={len(records)}")
 
     # 2. 批量调用 Agent，边调边落盘
     call_agent = get_agent(AGENT_NAME)
@@ -136,6 +138,7 @@ def main():
     print(f"\n  bad_case: {summary.get('bad_case_count', 0)} 条")
     print(f"\n  输出目录: {run_dir}")
     print("=" * 60)
+    get_logger().info(f"评测完成: run_id={summary['run_id']} 样本数={summary['total']} bad_case={summary.get('bad_case_count', 0)}")
 
 
 if __name__ == "__main__":

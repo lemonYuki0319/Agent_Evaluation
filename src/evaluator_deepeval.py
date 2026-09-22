@@ -25,6 +25,8 @@ from deepeval.metrics import (
 from deepeval.models import OpenAIModel
 from deepeval.test_case import LLMTestCase, LLMTestCaseParams
 
+from config.logger import get_logger
+
 
 def _build_judge_model() -> OpenAIModel:
     """创建 Judge 模型实例，注入 response_format 确保 JSON 输出。
@@ -161,4 +163,5 @@ def run_deepeval(records):
         scores.append({"index": i, "deepeval": row})
 
     print("[OK] DeepEval 评估完成")
+    get_logger().info(f"DeepEval 评估完成: 样本数={len(records)} 指标数={len(metrics)}")
     return scores

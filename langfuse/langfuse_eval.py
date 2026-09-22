@@ -17,6 +17,7 @@ if _PROJECT_ROOT not in sys.path:
     sys.path.insert(0, _PROJECT_ROOT)
 
 from langfuse import get_client  # noqa: E402
+from config.logger import get_logger  # noqa: E402
 from config.pipeline_cfg import AGENT_NAME  # noqa: E402
 from audit_agent import get_agent  # noqa: E402
 
@@ -65,6 +66,7 @@ def run(max_cases: int = None):
 
     langfuse.flush()
     print(f"[INFO] 完成: {ok}/{len(items)} 已上报 Langfuse")
+    get_logger().info(f"Langfuse 数据集跑批完成: 成功 {ok}/{len(items)}")
 
 
 if __name__ == "__main__":
