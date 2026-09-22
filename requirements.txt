@@ -9,3 +9,4 @@ python-dotenv>=1.0
 pandas>=2.0
 requests>=2.31
 Pillow>=9.0          # ragas 多模态 prompt 依赖
+langfuse>=3.0        # Langfuse 数据集 / 实验 / trace 上报
